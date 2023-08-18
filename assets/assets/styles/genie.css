@@ -1,0 +1,87 @@
+body {
+    background-image: url(../img/desert.jpg);
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+}
+
+#genieIMG {
+    width: 300px;
+    height: 500px;
+}
+
+#abbuIMG {
+    width: 300px;
+    height: 300px;
+}
+
+.box {
+    width: 100%;
+    background: rgba(255,255,255,0.2);
+    padding: 20px;
+    border: 2px solid #fff;
+    border-radius: 20px/50px;
+    background-clip: padding-box;
+    text-align: center;
+}
+
+div.btn {
+    font-size: 12px;
+}
+
+/* 
+
+----------------------- ADVERTENCIA ----------------------------
+
+El código de abajo no es de mi autoría, lo tomé para obtener el estilo
+de globo de texto del párrafo. Lo estoy tratando de comprender. :)))
+
+----------------------- ADVERTENCIA ----------------------------
+
+*/
+
+.triangle-border {
+    position: relative;
+    padding: 15px;
+    margin: 1em 0 3em;
+    border: 5px solid #7e9aec;
+    color: #333;
+    background: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.triangle-border:before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 39%;
+    border-width: 20px 20px 0;
+    border-style: solid;
+    border-color: #7e9aec transparent;
+    display: block;
+    width: 0;
+}
+
+.triangle-border:after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 40%;
+    border-width: 13px 13px 0;
+    border-style: solid;
+    border-color: #fff transparent;
+    display: block;
+    width: 0;
+}
