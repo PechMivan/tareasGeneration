@@ -10,6 +10,7 @@ function getRandomNumber(min = 1, max = 100){
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// Cuando el usuario dice que su número es mayor
 function numberIsLarger(){
     const minValue = document.getElementById("minValue");
     const guessedNumber = document.getElementById("guessedNumber");
@@ -19,6 +20,7 @@ function numberIsLarger(){
     setTimeout(makeNewGuess, 1500);
 }
 
+// Cuando el usuario dice que su número es menor
 function numberIsSmaller(){
     const maxValue = document.getElementById("maxValue");
     const guessedNumber = document.getElementById("guessedNumber");
@@ -28,6 +30,8 @@ function numberIsSmaller(){
     setTimeout(makeNewGuess, 1500);
 }
 
+// Hace nueva predicción basándose en el valor mínimo y máximo actuales
+// y usando el algoritmo de búsqueda binaria
 function makeNewGuess(){
     const minValueStr = document.getElementById("minValue");
     const maxValueStr = document.getElementById("maxValue");
@@ -43,6 +47,7 @@ function makeNewGuess(){
         finishGame();
 }
 
+// El algoritmo de búsqueda binaria
 function binarySearch(minValue = 1, maxValue = 100){
     console.log(`${minValue}, ${maxValue}`);
     return Math.floor( ( minValue + maxValue ) / 2);
@@ -79,8 +84,8 @@ function guessNumber(number){
     else if(isButtonDisabled)
         enableButtons();
 
-    genieIMG.setAttribute("src", "../img/genieGuess.png");
-    abbuIMG.setAttribute("src", "../img/abbuStart.png");
+    genieIMG.setAttribute("src", "/assets/img/genieGuess.png");
+    abbuIMG.setAttribute("src", "/assets/img/abbuStart.png");
     genieTextBox.innerHTML = `¡AJA!, el número que estás pensando es <span id="guessedNumber">${number}</span>, ¿cierto?`;
 }
 
@@ -89,8 +94,8 @@ function wrongNumber(){
     const abbuIMG = document.getElementById("abbuIMG");
     const genieTextBox = document.getElementById("genieTextBox");
 
-    genieIMG.setAttribute("src", "../img/genieWrong.png");
-    abbuIMG.setAttribute("src", "../img/abbuWrong.png");
+    genieIMG.setAttribute("src", "/assets/img/genieWrong.png");
+    abbuIMG.setAttribute("src", "/assets/img/abbuWrong.png");
 
     const option = getRandomNumber(1, 5);
     let message = "";
@@ -131,8 +136,8 @@ function setGame(){
 
     genieTextBox.innerHTML = `¡Piensa en un número del 1 al 100 y luego haz click en OK!`;
 
-    genieIMG.setAttribute("src", "../img/genieStart.png");
-    abbuIMG.setAttribute("src", "../img/abbuStart.png");
+    genieIMG.setAttribute("src", "/assets/img/genieStart.png");
+    abbuIMG.setAttribute("src", "/assets/img/abbuStart.png");
 }
 
 function finishGame(){
@@ -145,8 +150,8 @@ function finishGame(){
 
     const rightAnswer = guessedNumber.innerHTML;
 
-    genieIMG.setAttribute("src", "../img/genieRight.png");
-    abbuIMG.setAttribute("src", "../img/abbuRight.png");
+    genieIMG.setAttribute("src", "/assets/img/genieRight.png");
+    abbuIMG.setAttribute("src", "/assets/img/abbuRight.png");
     genieTextBox.innerHTML = `Tu número es el ${rightAnswer}, excelente decisión, Abú`;
 
     for (const tryButton of tryButtons) {
