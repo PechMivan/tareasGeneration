@@ -1,0 +1,28 @@
+body {
+    height: 100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,103,121,1) 20%, rgba(0,212,255,1) 100%);
+    background-size: cover;
+}
+
+img {
+    border-radius: 50%;
+}
+
+td,
+th {
+    vertical-align: middle;
+}
+
+#userTable {
+    width: 85vw;
+}
+
+@media (max-width:575px) {
+    .img {
+        display: none;
+    }
+    table{
+        font-size: 12px;
+    }
+}
