@@ -89,7 +89,6 @@ function printData(data) {
     </table>`;
 
     info.innerHTML = str;
-    document.body.style.backgroundSize = 'cover';
 }
 
 function paintRow(number){

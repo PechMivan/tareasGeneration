@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    background: url(/js07/img/starweb.jpg);
+    background: url("/js07/img/starweb.jpg");
     background-size: cover;
 }
 
