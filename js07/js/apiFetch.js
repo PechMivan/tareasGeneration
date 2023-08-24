@@ -8,9 +8,10 @@ async function getUsers(){
 }
 
 async function getUsersFromLocalStorage(){
-  const timeWhenSaved = localStorage.getItem("time");
+  const createdAt = localStorage.getItem("createdAt");
   // Si el tiempo es menor a un minuto, devuelve los datos del LocalStore
-  if( (new Date().getTime() - timeWhenSaved) < 60000 )
+  // Si no existe el tiempo ni los datos, devuelve undefined, resulta NaN y finalmente False.
+  if( (new Date().getTime() - createdAt) < 60000 )
     return JSON.parse(localStorage.getItem("users"));
   return {}; // Si no, devuelve un objeto vacío para evitar problemas de desestructuración.
 }
@@ -21,7 +22,7 @@ async function getUsersFromAPI(url) {
         const users = await resolve.json();
         // Guarda los datos y la hora en el LocalStorage.
         localStorage.setItem("users", JSON.stringify(users));
-        localStorage.setItem("time", new Date().getTime());
+        localStorage.setItem("createdAt", new Date().getTime());
         return users;
     } catch (error) {
         console.warn(error);
@@ -29,9 +30,35 @@ async function getUsersFromAPI(url) {
     }
 }
 
+// Funciones de carga de elementos.
+function showLoadingScreen(){
+  const info = document.getElementById("userTable");
+  info.innerHTML = `<div class="spinner-border text-light" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>`;
+}
+
+function hideLoadingScreen(){
+  const info = document.getElementById("userTable");
+  info.innerHTML = ``;
+}
+
+// --------------------------------
+
+// Función de delay, para efectos de interacción con el usuario.
+function sleep(ms = 0) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Funciones para mostrar datos en la pantalla
 async function showUsers() {
-    const data = await getUsers();
-    printData(data);
+  clearData();
+  showLoadingScreen();
+  // Aprovechando la magia de las promesas y el await.
+  await sleep(200);
+  const data = await getUsers();
+  hideLoadingScreen();
+  printData(data);
 }
 
 function printData(data) {
@@ -62,8 +89,14 @@ function printData(data) {
     </table>`;
 
     info.innerHTML = str;
+    document.body.style.backgroundSize = 'cover';
 }
 
 function paintRow(number){
-    return number % 2 == 0 ? "table-success" : "table-light";
+    return number % 2 == 0 ? "table-light" : "table-primary";
+}
+
+function clearData(){
+  const info = document.getElementById("userTable");
+  info.innerHTML = ``;
 }
